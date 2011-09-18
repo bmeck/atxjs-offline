@@ -67,6 +67,37 @@
     <script src="script/sync.js"></script>
     <script src="script/model.js"></script>
     <script src="script/init.js"></script>
+    <script>
+      var db = jQuery.couch.db('atxjsoffline');
+      function map(doc) {
+        if(doc.finished == null) {
+          emit(doc._id, doc);
+        }
+      }
+      function reduce(keys, values, rereduce) {
+        if(rereduce) {
+          var result = [];
+          for(var i = 0; i < values.length; i++) {
+            result = result.concat(values);
+          }
+          return result;
+        }
+        else {
+          for(var i = 0; i < values.length; i++) {
+            values[i] = values[i][1];
+          }
+          return values;
+        }
+      }
+      db.query(map.toString(),reduce.toString(),'javascript',{
+        success: function onSuccess(results) {
+          console.log('SUCCESS', results);
+        },
+        error: function onError() {
+          console.error('ERROR', arguments);
+        }
+      });
+    </script>
     
     
   </body>
