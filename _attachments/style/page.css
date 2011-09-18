@@ -1,0 +1,66 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: rgb(130,200,130) url('../img/bg.png');
+  font-family: 'Abril Fatface', cursive;
+  color: rgb(50, 50, 50);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    display: block;
+    border-bottom: 0.1em solid;
+}
+
+details {
+  border: 0.1em solid rgb(50, 50, 50);
+  padding: 1ex;
+  border-radius: 4px;
+  background: white;
+}
+details.finished {
+  background: rgba(100,100,100,0.5);
+}
+
+details .info {
+  margin-left: 3em;
+}
+
+#todoList {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0.2em;
+}
+
+#todoList li + li {
+  margin-top: 1em;
+}
+
+#content {
+  background: white url('../img/content.png');
+  margin: 2em auto;
+  margin-top: 0;
+  padding: 2em;
+  border-left: 0.1em solid;
+  border-right: 0.1em solid;
+  width: 75%;
+  height: auto;
+  min-height: 100%;
+}
+
+#newItem input, #newItem textarea {
+    border: 1px solid gray;
+    display: block;
+    width: 100%;
+}
+
+#addNewItem {
+    display: block;
+    width: 100%;
+}

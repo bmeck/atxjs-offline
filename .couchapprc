@@ -1,0 +1,7 @@
+{
+  "env" : {
+    "default" : {
+      "db" : "http://atxjsoffline.iriscouch.com:5984/atxjsoffline"
+    }
+  }
+}
