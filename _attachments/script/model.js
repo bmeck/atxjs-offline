@@ -7,6 +7,10 @@ TodoItem = Backbone.Model.extend({
           : +new Date()
       });
     },
+    url: function url() {
+console.error('1')
+      return this.id || '/';
+    },
     toJSON: function toJSON() {
       var finished = this.get('finished');
       return {
@@ -30,7 +34,7 @@ TodoItem = Backbone.Model.extend({
       this.set({
         finished: +new Date()
       });
-      //this.save();
+      this.save();
     }
 }, {
   title: String,
@@ -40,6 +44,16 @@ TodoItem = Backbone.Model.extend({
 });
 TodoList = Backbone.Collection.extend({
   model: TodoItem,
+  initialize: function initialize() {
+    this.bind("add", function(todoItem) {
+      if(todoItem.isNew()) {
+        todoItem.save();
+      }
+    });
+  },
+  url: function url() {
+    return '/';
+  },
   comparator: function TodoListComparator(todoItem) {
       return todoItem.created;
   }
